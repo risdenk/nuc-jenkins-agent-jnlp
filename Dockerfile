@@ -2,13 +2,13 @@ FROM jenkins/jnlp-slave
 
 USER root
 
-ENV DOCKERVERSION=19.03.8
+ENV DOCKERVERSION=20.10.8
 RUN curl -fsSLO https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKERVERSION}.tgz \
   && tar xzvf docker-${DOCKERVERSION}.tgz --strip 1 \
                  -C /usr/local/bin docker/docker \
   && rm docker-${DOCKERVERSION}.tgz
 
-ENV DOCKERCOMPOSE_VERSION=1.25.5
+ENV DOCKERCOMPOSE_VERSION=1.29.2
 RUN curl -L https://github.com/docker/compose/releases/download/${DOCKERCOMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
 
 RUN groupadd -g 999 docker && usermod -aG docker jenkins
